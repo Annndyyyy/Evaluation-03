@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: green;
+        }
+
+        header {
+            background-color: green;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #cb2d2d;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .auth-buttons button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .hero {
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .hero .highlight {
+            color: #007BFF;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1rem;
+        }
+
+        .start-building {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .features, .intelligent-guidance, .user-friendly-interface, .library {
+            padding: 2rem 1rem;
+            text-align: center;
+            background-color: #fff;
+            margin: 1rem 0;
+        }
+
+        .features h2, .intelligent-guidance h2, .user-friendly-interface h2, .library h2 {
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .try-now {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        footer nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        footer nav ul li {
+            display: inline;
+        }
+
+        footer nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Resume.AI</div>
+        <nav>
+            
+            <div class="auth-buttons">
+                <button class="signin">Sign In</button>
+                <button class="create-resume">Create My Resume</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to <span class="highlight">AI Resume Maker!</span> Your path to professional success!</h1>
+            <button class="start-building">Start Building</button>
+            <div class="hero-image">
+                <img src="data:image/jpeg;base64,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" alt="Resume Example">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why choose AI resume maker?</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>Real-time preview</h3>
+                <p>Preview the resumes real-time while adding the details.</p>
+            </div>
+            <div class="feature">
+                <h3>Templates Library</h3>
+                <p>Select from a wide range of templates that suits your professional needs.</p>
+            </div>
+            <div class="feature">
+                <h3>Dynamic Content Generation</h3>
+                <p>Automatically creates content based on your inputs.</p>
+            </div>
+            <div class="feature">
+                <h3>Keyword optimization</h3>
+                <p>Strategically select and incorporate relevant keywords within your resume or CV.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="intelligent-guidance">
+        <h2>Intelligent Guidance</h2>
+        <p>Our AI-powered platform provides step-by-step guidance as you build your resume. From selecting the right template to tailoring content, our AI ensures your resume reflects your unique strengths.</p>
+        <button class="try-now">Try Now</button>
+    </section>
+
+    <section class="user-friendly-interface">
+        <h2>User-Friendly Interface</h2>
+        <p>No more struggling with complex formatting tools. Our intuitive interface makes it easy to enter your information, choose from a variety of templates, and customize your resume effortlessly.</p>
+    </section>
+
+    <section class="library">
+        <h2>Explore the library</h2>
+        <img src="https://marketplace.canva.com/EAFRuCp3DcY/1/0/1131w/canva-black-white-minimalist-cv-resume-f5JNR-K5jjw.jpg" alt="Resume Logo">
+        <img src="https://img.freepik.com/free-psd/clean-modern-resume-portfolio-cv-template_120329-3603.jpg" alt="Resume logo">
+        <div class="library-items">
+            
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Masters' Union. All rights reserved.</p>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
